@@ -1,0 +1,27 @@
+1.
+SELECT 
+    LOWER(name) AS normalized_name,
+    COUNT(*) AS occurrence_count,
+    STRING_AGG(DISTINCT source, ', ') AS sources
+FROM 
+    companies
+GROUP BY 
+    LOWER(name)
+HAVING 
+    COUNT(*) > 1
+ORDER BY 
+    occurrence_count DESC, normalized_name;
+
+2.
+
+
+3.
+SELECT 
+    source, 
+    COUNT(*) AS company_count
+FROM 
+    companies
+GROUP BY 
+    source
+ORDER BY 
+    company_count DESC;
